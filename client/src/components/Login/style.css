@@ -1,0 +1,18 @@
+#login button {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border: none;
+    border-radius: 20px;
+    width: 100px;
+    height: 60px;
+    background-color: #AC2310;
+    font-size: 30px;
+    color: white;
+}
+
+#login button:hover {
+    background-color: #c22c18;
+}
