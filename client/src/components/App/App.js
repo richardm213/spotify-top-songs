@@ -3,10 +3,11 @@ import Login from "../Login";
 import TrackGrid from "../TrackGrid";
 
 const App = () => {
+  const login = new URLSearchParams(window.location.search).get("login");
   return (
     <div>
       <Login />
-      <TrackGrid />
+      {login && <TrackGrid />}
     </div>
   );
 };
