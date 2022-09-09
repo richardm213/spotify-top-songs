@@ -25,7 +25,7 @@ app.get("/callback", async (req, res) => {
     spotifyApi.setAccessToken(data.body.access_token);
     console.log("New access_token:", spotifyApi.getAccessToken());
   }, (expires_in * 1000) / 6);
-  res.send("done");
+  res.redirect("http://localhost:3000/?login=true");
 });
 
 app.listen(port, console.log("Visit http://localhost:" + port + "/login"));
