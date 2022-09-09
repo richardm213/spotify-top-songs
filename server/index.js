@@ -14,4 +14,18 @@ app.get("/login", (req, res) => {
   res.redirect(spotifyApi.createAuthorizeURL(scopes));
 });
 
+app.get("/callback", async (req, res) => {
+  const code = req.query.code;
+  const auth = await spotifyApi.authorizationCodeGrant(code);
+  spotifyApi.setAccessToken(auth.body.access_token);
+  spotifyApi.setRefreshToken(auth.body.refresh_token);
+  const expires_in = auth.body.expires_in;
+  setInterval(async () => {
+    const data = await spotifyApi.refreshAccessToken();
+    spotifyApi.setAccessToken(data.body.access_token);
+    console.log("New access_token:", spotifyApi.getAccessToken());
+  }, (expires_in * 1000) / 6);
+  res.send("done");
+});
+
 app.listen(port, console.log("Visit http://localhost:" + port + "/login"));
