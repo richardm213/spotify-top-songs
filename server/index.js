@@ -28,4 +28,16 @@ app.get("/callback", async (req, res) => {
   res.redirect("http://localhost:3000/?login=true");
 });
 
+app.use("/top/:time_range/:offset", async (req, res) => {
+  const timeRange = req.params.time_range;
+  const limit = 50;
+  const offset = req.params.offset;
+  const topTracks = await spotifyApi.getMyTopTracks({
+    time_range: timeRange,
+    limit: limit,
+    offset: offset,
+  });
+  res.json(topTracks);
+});
+
 app.listen(port, console.log("Visit http://localhost:" + port + "/login"));
