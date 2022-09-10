@@ -1,3 +1,7 @@
 .track {
     display: inline-block;
 }
+
+.track img {
+    width: 60px;
+}

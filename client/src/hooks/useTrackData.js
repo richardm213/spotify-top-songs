@@ -15,7 +15,7 @@ const useTrackData = (timeRange) => {
       const tracks = await getTopTracks(timeRange);
       setTrackData([]);
       for (let i = 0; i < tracks.length; ++i) {
-        const albumCover = tracks[i].album.images[2].url;
+        const albumCover = tracks[i].album.images[0].url;
         const albumName = tracks[i].album.name;
         const preview = tracks[i].preview_url;
         setTrackData((prevTrackData) => [
