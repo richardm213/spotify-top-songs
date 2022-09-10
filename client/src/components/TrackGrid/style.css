@@ -1,8 +1,11 @@
 #track-grid {
+    display: grid;
+    grid-template-columns: repeat(10, minmax(70px, auto));
     margin-top: 25px;
 }
 
 #time_range {
     text-align: center;
     margin-bottom: 15px;
+    grid-column: 1/-1;
 }

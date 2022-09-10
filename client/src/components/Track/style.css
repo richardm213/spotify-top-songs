@@ -1,7 +1,7 @@
 .track {
-    display: inline-block;
+    display: inline-flex;
 }
 
 .track img {
-    width: 60px;
+    min-width: 70px;
 }
