@@ -6,7 +6,7 @@ const App = () => {
   const login = new URLSearchParams(window.location.search).get("login");
   return (
     <div>
-      <Login />
+      {!login && <Login />}
       {login && <TrackGrid />}
     </div>
   );
