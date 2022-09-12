@@ -12,6 +12,7 @@ const TrackGrid = () => {
 
   return (
     <div id="track-grid">
+      <h1 id="tracks-header">Your Top Tracks</h1>
       <div id="time_range">
         <select value={timeRange} onChange={handleTimeRange}>
           <option value="short_term">Past month</option>
