@@ -1,7 +1,9 @@
 #track-grid {
-    display: grid;
-    grid-template-columns: repeat(10, minmax(70px, auto));
-    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 15px;
+    align-self: flex-start;
 }
 
 #tracks-header {
@@ -15,6 +17,11 @@
     #tracks-header {
         font-size: calc(28px + 0.02 * (100vw - 1394px))
     }
+}
+
+#tracks {
+    display: grid;
+    grid-template-columns: repeat(10, minmax(70px, auto));
 }
 
 #time_range {

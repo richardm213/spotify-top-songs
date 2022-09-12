@@ -20,7 +20,7 @@ const TrackGrid = () => {
           <option value="long_term">All time</option>
         </select>
       </div>
-      {trackData}
+      <div id="tracks">{trackData}</div>
     </div>
   );
 };
