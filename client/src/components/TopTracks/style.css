@@ -1,0 +1,27 @@
+#top-tracks {
+    display: grid;
+    grid-template-columns: 1.75fr 0.98fr;
+    column-gap: 40px;
+    margin-top: 100px;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+@media screen and (min-width: 1394px) {
+    #top-tracks {
+        margin-left: calc(100px + 0.15 * (100vw - 1394px));
+        margin-right: calc(100px + 0.15 * (100vw - 1394px));
+    }
+}
+
+@media screen and (min-width: 725px) and (max-width: 940px) {
+    #top-tracks {
+        margin-left: calc(100px - 0.5 * (940px - 100vw))
+    }
+}
+
+@media screen and (max-width: 725px) {
+    #top-tracks {
+        margin-left: -10px;
+    }
+}

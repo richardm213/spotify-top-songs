@@ -1,13 +1,14 @@
 import React from "react";
 import Login from "../Login";
-import TrackGrid from "../TrackGrid";
+import TopTracks from "../TopTracks";
+import "./style.css";
 
 const App = () => {
   const login = new URLSearchParams(window.location.search).get("login");
   return (
-    <div>
+    <div className="app">
       {!login && <Login />}
-      {login && <TrackGrid />}
+      {login && <TopTracks />}
     </div>
   );
 };
