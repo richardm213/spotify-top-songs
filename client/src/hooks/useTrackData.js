@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Track from "../components/Track";
 import axios from "axios";
+import { v4 as uuidv4 } from "uuid";
 
 const getTopTracks = (timeRange) => {
   return axios.get(`http://localhost:8888/top/${timeRange}/0`).then((data) => {
@@ -23,6 +24,7 @@ const useTrackData = (timeRange, setCurrTrack) => {
         setTrackData((prevTrackData) => [
           ...prevTrackData,
           <Track
+            key={uuidv4()}
             albumCover={albumCover}
             albumName={albumName}
             preview={preview}
