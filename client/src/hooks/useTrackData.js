@@ -18,12 +18,16 @@ const useTrackData = (timeRange) => {
         const albumCover = tracks[i].album.images[0].url;
         const albumName = tracks[i].album.name;
         const preview = tracks[i].preview_url;
+        const songName = tracks[i].name;
+        const artistName = tracks[i].artists[0].name;
         setTrackData((prevTrackData) => [
           ...prevTrackData,
           <Track
             albumCover={albumCover}
             albumName={albumName}
             preview={preview}
+            songName={songName}
+            artistName={artistName}
           />,
         ]);
       }
