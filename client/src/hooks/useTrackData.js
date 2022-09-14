@@ -8,7 +8,7 @@ const getTopTracks = (timeRange) => {
   });
 };
 
-const useTrackData = (timeRange) => {
+const useTrackData = (timeRange, setCurrTrack) => {
   const [trackData, setTrackData] = useState([]);
   useEffect(() => {
     (async () => {
@@ -28,11 +28,12 @@ const useTrackData = (timeRange) => {
             preview={preview}
             songName={songName}
             artistName={artistName}
+            setCurrTrack={setCurrTrack}
           />,
         ]);
       }
     })();
-  }, [timeRange]);
+  }, [timeRange, setCurrTrack]);
   return trackData;
 };
 

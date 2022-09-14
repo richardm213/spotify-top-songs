@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import useTrackData from "../../hooks/useTrackData";
 import "./style.css";
 
-const TrackGrid = () => {
+const TrackGrid = (props) => {
   const [timeRange, setTimeRange] = useState("short_term");
-  const trackData = useTrackData(timeRange);
+  const trackData = useTrackData(timeRange, props.setCurrTrack);
 
   const handleTimeRange = (e) => {
     setTimeRange(e.target.value);
