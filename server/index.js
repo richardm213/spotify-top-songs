@@ -13,33 +13,45 @@ const spotifyApi = new SpotifyWebApi({
 
 app.get("/login", (req, res) => {
   const scopes = require("./scopes");
-  res.redirect(spotifyApi.createAuthorizeURL(scopes));
+  try {
+    res.redirect(spotifyApi.createAuthorizeURL(scopes));
+  } catch (err) {
+    res.sendStatus(err.statusCode);
+  }
 });
 
 app.get("/callback", async (req, res) => {
   const code = req.query.code;
-  const auth = await spotifyApi.authorizationCodeGrant(code);
-  spotifyApi.setAccessToken(auth.body.access_token);
-  spotifyApi.setRefreshToken(auth.body.refresh_token);
-  const expires_in = auth.body.expires_in;
-  setInterval(async () => {
-    const data = await spotifyApi.refreshAccessToken();
-    spotifyApi.setAccessToken(data.body.access_token);
-    console.log("New access_token:", spotifyApi.getAccessToken());
-  }, (expires_in * 1000) / 6);
-  res.redirect("http://localhost:3000/?login=true");
+  try {
+    const auth = await spotifyApi.authorizationCodeGrant(code);
+    spotifyApi.setAccessToken(auth.body.access_token);
+    spotifyApi.setRefreshToken(auth.body.refresh_token);
+    const expires_in = auth.body.expires_in;
+    setInterval(async () => {
+      const data = await spotifyApi.refreshAccessToken();
+      spotifyApi.setAccessToken(data.body.access_token);
+      console.log("New access_token:", spotifyApi.getAccessToken());
+    }, (expires_in * 1000) / 6);
+    res.redirect("http://localhost:3000/?login=true");
+  } catch (err) {
+    res.sendStatus(err.statusCode);
+  }
 });
 
 app.use("/top/:time_range/:offset", async (req, res) => {
   const timeRange = req.params.time_range;
   const limit = 50;
   const offset = req.params.offset;
-  const topTracks = await spotifyApi.getMyTopTracks({
-    time_range: timeRange,
-    limit: limit,
-    offset: offset,
-  });
-  res.json(topTracks);
+  try {
+    const topTracks = await spotifyApi.getMyTopTracks({
+      time_range: timeRange,
+      limit: limit,
+      offset: offset,
+    });
+    res.json(topTracks);
+  } catch (err) {
+    res.sendStatus(err.statusCode);
+  }
 });
 
 app.listen(port, console.log("Visit http://localhost:" + port + "/login"));
