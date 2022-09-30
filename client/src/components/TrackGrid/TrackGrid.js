@@ -4,7 +4,11 @@ import "./style.css";
 
 const TrackGrid = (props) => {
   const [timeRange, setTimeRange] = useState("short_term");
-  const trackData = useTrackData(timeRange, props.setCurrTrack);
+  const trackData = useTrackData(
+    props.accessToken,
+    timeRange,
+    props.setCurrTrack
+  );
 
   const handleTimeRange = (e) => {
     setTimeRange(e.target.value);
