@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, memo } from "react";
 import useTrackData from "../../hooks/useTrackData";
 import "./style.css";
 
@@ -29,4 +29,4 @@ const TrackGrid = (props) => {
   );
 };
 
-export default TrackGrid;
+export default memo(TrackGrid);
