@@ -30,15 +30,15 @@ app.get("/callback", async (req, res) => {
   const code = req.query.code;
   try {
     const auth = await spotifyApi.authorizationCodeGrant(code);
-    spotifyApi.setAccessToken(auth.body.access_token);
-    spotifyApi.setRefreshToken(auth.body.refresh_token);
-    const expires_in = auth.body.expires_in;
-    setInterval(async () => {
-      const data = await spotifyApi.refreshAccessToken();
-      spotifyApi.setAccessToken(data.body.access_token);
-      console.log("New access_token:", spotifyApi.getAccessToken());
-    }, (expires_in * 1000) / 6);
-    res.redirect("http://localhost:3000/?login=true");
+    res.redirect(
+      "http://localhost:3000/?login=true" +
+        "&accessToken=" +
+        auth.body.access_token +
+        "&expiresIn=" +
+        auth.body.expires_in +
+        "&refreshToken=" +
+        auth.body.refresh_token
+    );
   } catch (err) {
     res.sendStatus(err.statusCode);
   }
