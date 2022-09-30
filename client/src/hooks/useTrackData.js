@@ -4,9 +4,11 @@ import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 
 const getTopTracks = (accessToken, timeRange) => {
-  return axios.get(`http://localhost:8888/top/${timeRange}/0`).then((data) => {
-    return data.data.body.items;
-  });
+  return axios
+    .post(`http://localhost:8888/top/${timeRange}/0`, { accessToken })
+    .then((data) => {
+      return data.data.body.items;
+    });
 };
 
 const useTrackData = (accessToken, timeRange, setCurrTrack) => {
