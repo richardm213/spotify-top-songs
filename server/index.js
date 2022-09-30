@@ -3,6 +3,7 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 app.use(cors());
+app.use(express.json());
 const port = process.env.PORT || 8888;
 const SpotifyWebApi = require("spotify-web-api-node");
 
@@ -43,12 +44,13 @@ app.get("/callback", async (req, res) => {
   }
 });
 
-app.use("/top/:time_range/:offset", async (req, res) => {
+app.post("/top/:time_range/:offset", async (req, res) => {
   const spotifyApi = new SpotifyWebApi({
     clientId: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
     redirectUri: process.env.REDIRECT_URI,
   });
+  spotifyApi.setAccessToken(req.body.accessToken);
   const timeRange = req.params.time_range;
   const limit = 50;
   const offset = req.params.offset;
