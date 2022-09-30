@@ -5,13 +5,13 @@ const cors = require("cors");
 app.use(cors());
 const port = process.env.PORT || 8888;
 const SpotifyWebApi = require("spotify-web-api-node");
-const spotifyApi = new SpotifyWebApi({
-  clientId: process.env.CLIENT_ID,
-  clientSecret: process.env.CLIENT_SECRET,
-  redirectUri: process.env.REDIRECT_URI,
-});
 
 app.get("/login", (req, res) => {
+  const spotifyApi = new SpotifyWebApi({
+    clientId: process.env.CLIENT_ID,
+    clientSecret: process.env.CLIENT_SECRET,
+    redirectUri: process.env.REDIRECT_URI,
+  });
   const scopes = require("./scopes");
   try {
     res.redirect(spotifyApi.createAuthorizeURL(scopes));
@@ -21,6 +21,11 @@ app.get("/login", (req, res) => {
 });
 
 app.get("/callback", async (req, res) => {
+  const spotifyApi = new SpotifyWebApi({
+    clientId: process.env.CLIENT_ID,
+    clientSecret: process.env.CLIENT_SECRET,
+    redirectUri: process.env.REDIRECT_URI,
+  });
   const code = req.query.code;
   try {
     const auth = await spotifyApi.authorizationCodeGrant(code);
@@ -39,6 +44,11 @@ app.get("/callback", async (req, res) => {
 });
 
 app.use("/top/:time_range/:offset", async (req, res) => {
+  const spotifyApi = new SpotifyWebApi({
+    clientId: process.env.CLIENT_ID,
+    clientSecret: process.env.CLIENT_SECRET,
+    redirectUri: process.env.REDIRECT_URI,
+  });
   const timeRange = req.params.time_range;
   const limit = 50;
   const offset = req.params.offset;
