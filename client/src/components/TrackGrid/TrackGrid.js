@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, memo } from "react";
 import useTrackData from "../../hooks/useTrackData";
 import "./style.css";
 
 const TrackGrid = (props) => {
   const [timeRange, setTimeRange] = useState("short_term");
-  const trackData = useTrackData(timeRange, props.setCurrTrack);
+  const trackData = useTrackData(
+    props.accessToken,
+    timeRange,
+    props.setCurrTrack
+  );
 
   const handleTimeRange = (e) => {
     setTimeRange(e.target.value);
@@ -25,4 +29,4 @@ const TrackGrid = (props) => {
   );
 };
 
-export default TrackGrid;
+export default memo(TrackGrid);

@@ -3,17 +3,20 @@ import Track from "../components/Track";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 
-const getTopTracks = (timeRange) => {
-  return axios.get(`http://localhost:8888/top/${timeRange}/0`).then((data) => {
-    return data.data.body.items;
-  });
+const getTopTracks = (accessToken, timeRange) => {
+  return axios
+    .post(`http://localhost:8888/top/${timeRange}/0`, { accessToken })
+    .then((data) => {
+      return data.data.body.items;
+    });
 };
 
-const useTrackData = (timeRange, setCurrTrack) => {
+const useTrackData = (accessToken, timeRange, setCurrTrack) => {
   const [trackData, setTrackData] = useState([]);
   useEffect(() => {
     (async () => {
-      const tracks = await getTopTracks(timeRange);
+      if (!accessToken) return;
+      const tracks = await getTopTracks(accessToken, timeRange);
       setTrackData([]);
       for (let i = 0; i < tracks.length; ++i) {
         const albumCover = tracks[i].album.images[0].url;
@@ -35,7 +38,7 @@ const useTrackData = (timeRange, setCurrTrack) => {
         ]);
       }
     })();
-  }, [timeRange, setCurrTrack]);
+  }, [accessToken, timeRange, setCurrTrack]);
   return trackData;
 };
 
