@@ -20,7 +20,7 @@ Next, go to the app settings and add http://localhost:8888/callback as a redirec
 
 Once you clone the repository, cd into the server folder and create an env file with your Spotify app credentials.
 
-```json
+```sh
 CLIENT_ID=your-client-id
 CLIENT_SECRET=your-client-secret
 REDIRECT_URI=http://localhost:8888/callback
