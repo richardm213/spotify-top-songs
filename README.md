@@ -6,7 +6,7 @@ https://richardm213.github.io/spotify-top-songs/
 
 ## Demo
 
-https://user-images.githubusercontent.com/92076990/191145412-5c2de48f-0b70-443d-8900-bda68df61ea9.mp4
+https://user-images.githubusercontent.com/92076990/195462975-f7c51afd-e689-40e3-8ea8-7da9fce82aa8.mp4
 
 ## How to run locally
 
