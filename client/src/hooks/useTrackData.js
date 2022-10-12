@@ -1,22 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Track from "../components/Track";
-import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 
-const getTopTracks = (accessToken, timeRange) => {
-  return axios
-    .post(`http://localhost:8888/top/${timeRange}/0`, { accessToken })
-    .then((data) => {
-      return data.data.body.items;
-    });
-};
-
-const useTrackData = (accessToken, timeRange, setCurrTrack) => {
+const useTrackData = (accessToken, spotifyRequest, timeRange, setCurrTrack) => {
   const [trackData, setTrackData] = useState([]);
   useEffect(() => {
     (async () => {
       if (!accessToken) return;
-      const tracks = await getTopTracks(accessToken, timeRange);
+      const tracks = await spotifyRequest(accessToken, timeRange);
       setTrackData([]);
       for (let i = 0; i < tracks.length; ++i) {
         const albumCover = tracks[i].album.images[0].url;
@@ -38,7 +29,7 @@ const useTrackData = (accessToken, timeRange, setCurrTrack) => {
         ]);
       }
     })();
-  }, [accessToken, timeRange, setCurrTrack]);
+  }, [accessToken, spotifyRequest, timeRange, setCurrTrack]);
   return trackData;
 };
 

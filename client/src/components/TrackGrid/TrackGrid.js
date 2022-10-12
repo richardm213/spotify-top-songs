@@ -6,6 +6,7 @@ const TrackGrid = (props) => {
   const [timeRange, setTimeRange] = useState("short_term");
   const trackData = useTrackData(
     props.accessToken,
+    props.spotifyRequest,
     timeRange,
     props.setCurrTrack
   );
