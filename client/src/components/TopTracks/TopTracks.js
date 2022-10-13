@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Popup from "../Popup";
 import TrackGrid from "../TrackGrid";
 import TrackDetails from "../TrackDetails";
@@ -21,7 +21,22 @@ const TopTracks = () => {
     albumCover: require("../../assets/default.png"),
     albumName: "",
     artistName: "",
+    preview: "",
   });
+
+  const [audio, setAudio] = useState(new Audio());
+
+  useEffect(() => {
+    if (!currTrack.preview) {
+      audio.pause();
+    }
+
+    if (currTrack.preview) {
+      audio.setAttribute("src", currTrack.preview);
+      setAudio(audio);
+      audio.play();
+    }
+  }, [currTrack.preview, audio]);
 
   return (
     <div>

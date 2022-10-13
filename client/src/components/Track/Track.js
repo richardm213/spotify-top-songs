@@ -2,16 +2,14 @@ import React from "react";
 import "./style.css";
 
 const Track = (props) => {
-  const audio = new Audio(props.preview);
   const handleMouseOver = () => {
     props.setCurrTrack({
       albumName: props.albumName,
       songName: props.songName,
       albumCover: props.albumCover,
       artistName: props.artistName,
+      preview: props.preview,
     });
-    audio.currentTime = 0;
-    audio.play();
   };
   const handleMouseLeave = () => {
     props.setCurrTrack({
@@ -19,8 +17,8 @@ const Track = (props) => {
       albumCover: require("../../assets/default.png"),
       albumName: "",
       artistName: "",
+      preview: "",
     });
-    audio.pause();
   };
   return (
     <div className="track">
