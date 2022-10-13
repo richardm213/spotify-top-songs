@@ -13,12 +13,6 @@
     color: black;
 }
 
-@media screen and (min-width: 1394px) {
-    #tracks-header {
-        font-size: calc(28px + 0.02 * (100vw - 1394px))
-    }
-}
-
 #tracks {
     display: grid;
     grid-template-columns: repeat(10, minmax(70px, auto));
@@ -28,4 +22,28 @@
     text-align: center;
     margin-bottom: 15px;
     grid-column: 1/-1;
+    font-size: 15px;
+    color: var(--time-range-primary);
+}
+
+#time_range span:hover {
+    cursor: pointer;
+}
+
+#time_range span+span {
+    margin-left: 20px;
+}
+
+@media screen and (min-width: 1394px) {
+    #tracks-header {
+        font-size: calc(28px + 0.02 * (100vw - 1394px))
+    }
+
+    #time_range {
+        font-size: calc(15px + 0.006 * (100vw - 1394px))
+    }
+
+    #time_range span+span {
+        margin-left: calc(20px + 0.025 * (100vw - 1394px))
+    }
 }
