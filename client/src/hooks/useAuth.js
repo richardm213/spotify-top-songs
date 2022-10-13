@@ -21,7 +21,9 @@ const useAuth = () => {
     if (!refreshToken) return;
     const i = setInterval(() => {
       axios
-        .post("http://localhost:8888/refresh", { refreshToken })
+        .post(process.env.REACT_APP_SERVER_BASE_URL + "/refresh", {
+          refreshToken,
+        })
         .then((data) => {
           setAccessToken(data.accessToken);
         });
