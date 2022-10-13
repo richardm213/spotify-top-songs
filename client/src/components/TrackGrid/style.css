@@ -28,4 +28,14 @@
     text-align: center;
     margin-bottom: 15px;
     grid-column: 1/-1;
+    font-size: 15px;
+    color: var(--time-range-primary);
+}
+
+#time_range span:hover {
+    cursor: pointer;
+}
+
+#time_range span+span {
+    margin-left: 20px;
 }

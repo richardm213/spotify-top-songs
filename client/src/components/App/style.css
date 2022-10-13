@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,500;1,400&display=swap');
 
+:root {
+    --time-range-primary: #b7b7b7;
+    --time-range-selected: #000000;
+}
+
 html {
     -webkit-user-select: none;
     -khtml-user-select: none;
