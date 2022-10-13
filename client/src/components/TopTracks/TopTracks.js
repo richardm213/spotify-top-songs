@@ -11,7 +11,9 @@ const TopTracks = () => {
   const [popupClicked, setPopupClicked] = useState(false);
   const getTopTracks = useCallback((accessToken, timeRange) => {
     return axios
-      .post(`http://localhost:8888/top/${timeRange}/0`, { accessToken })
+      .post(`${process.env.REACT_APP_SERVER_BASE_URL}/top/${timeRange}/0`, {
+        accessToken,
+      })
       .then((data) => {
         return data.data.body.items;
       });
