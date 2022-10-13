@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/spotify-top-songs/static/css/main.9884b872.css",
-    "main.js": "/spotify-top-songs/static/js/main.33150d4c.js",
+    "main.js": "/spotify-top-songs/static/js/main.2375f5d5.js",
     "static/media/music.png": "/spotify-top-songs/static/media/music.7eb1c61f468ef0131793.png",
     "static/media/default.png": "/spotify-top-songs/static/media/default.ef7b392f0636fb33a018.png",
     "static/media/cursor.png": "/spotify-top-songs/static/media/cursor.cf852ab5189d73103a3b.png",
     "index.html": "/spotify-top-songs/index.html",
     "main.9884b872.css.map": "/spotify-top-songs/static/css/main.9884b872.css.map",
-    "main.33150d4c.js.map": "/spotify-top-songs/static/js/main.33150d4c.js.map"
+    "main.2375f5d5.js.map": "/spotify-top-songs/static/js/main.2375f5d5.js.map"
   },
   "entrypoints": [
     "static/css/main.9884b872.css",
-    "static/js/main.33150d4c.js"
+    "static/js/main.2375f5d5.js"
   ]
 }
